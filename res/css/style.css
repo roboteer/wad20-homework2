@@ -113,6 +113,25 @@ nav div.avatar-container {
     text-align: right;
 }
 
+/* somehow position dropdown over everything else, under profile image...*/
+.dropdown {
+    display:none;
+    border: 1px solid grey;
+    background-color: white;
+    position: absolute;
+    top:100%;
+    right:0;
+    height:auto;
+    padding: 1.5em;
+}
+.dropdown a,
+.dropdown span {
+    display: block;
+    position: relative;
+    height: 2em;
+}
+
+
 .main-container {
     width: 50%;
     min-height: 100%;
