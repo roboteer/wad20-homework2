@@ -43,9 +43,6 @@ let postTemplate = '<div class="post">\n' +
     '          </span>\n' +
     '          <small>Sep 18, 2020 15:16</small>\n' +
     '        </div>\n' +
-    '        <div class="post-image">\n' +
-    '          TODO: replace content\n' +
-    '        </div>\n' +
     '        <div class="post-title">\n' +
     '          <h3>This you should not see</h3>\n' +
     '        </div>\n' +
@@ -71,10 +68,26 @@ function updateAllPosts(posts) {
         $('.like-button', postElement).text( post.likes );
 
         //TODO: video content by type
-        if (post.media && post.media.type == 'image') {
-            $('.post-image', postElement).html( $('<img>').attr('src', post.media.url) );
-        }
+       
+        if(post.media){
+            $( ".post-author", postElement ).after('<div class="post-image"></div>');
+            if(post.media.type == "image"){
+                $('.post-image', postElement).html( $('<img>').attr('src', post.media.url) );
+            }else if(post.media.type == "video"){
+                var video = $('<video />', {
+                    id: 'video',
+                    src: post.media.url,
+                    type: 'video/mp4',
+                    controls: true
+                  });
+                video.appendTo($('.post-image', postElement));
+            }
+
+        }else{
         //TODO: if there is no media, then remove .post-image also?
+        }
+
+        
 
         $('section.main-container').append(postElement);
     }
