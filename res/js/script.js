@@ -66,12 +66,10 @@ function updateAllPosts(posts) {
 
         $('.post-title h3', postElement).text( post.text );
         $('.like-button', postElement).text( post.likes );
-
-        //TODO: video content by type
-       
+        
         if(post.media){
             $( ".post-author", postElement ).after('<div class="post-image"></div>');
-            if(post.media.type == "image"){
+           if(post.media.type == "image"){
                 $('.post-image', postElement).html( $('<img>').attr('src', post.media.url) );
             }else if(post.media.type == "video"){
                 var video = $('<video />', {
@@ -83,15 +81,8 @@ function updateAllPosts(posts) {
                 video.appendTo($('.post-image', postElement));
             }
 
-        }else{
-        //TODO: if there is no media, then remove .post-image also?
         }
-
-        
 
         $('section.main-container').append(postElement);
     }
 }
-
-//TODO: like button clickable
-//TODO: remove static posts from index.html
