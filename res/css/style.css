@@ -218,6 +218,6 @@ nav div.avatar-container {
     border: none;
 }
 
-.like-button.liked {
+.liked {
     background-color: #01579b;
 }

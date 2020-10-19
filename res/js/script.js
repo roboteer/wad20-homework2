@@ -7,6 +7,16 @@ $(function() {
         $('#profile-menu').toggle();
     });
 
+    /* Like button toggle*/
+    /* Like button is loaded dynamically, so we attach function to static class 'main-container'*/
+    $('.main-container').on('click',".like-button",function () {    
+        var postId = $(this).data('postid');    
+        $('.like-button[data-postid="'+postId+'"]').toggleClass('liked');
+    });
+    
+
+
+
     /* Fetch user info and put it into dropdown */
     $.get('https://private-anon-6783f8eed5-wad20postit.apiary-mock.com/users/1')
         .done( (data) => updateUserInfo(data) )
@@ -47,7 +57,7 @@ let postTemplate = '<div class="post">\n' +
     '          <h3>This you should not see</h3>\n' +
     '        </div>\n' +
     '        <div class="post-actions">\n' +
-    '          <button type="button" name="like" class="like-button">-999</button>\n' +
+    '          <button type="button" name="like" class="like-button"></button>\n' +
     '        </div>\n' +
     '      </div>';
 
@@ -65,8 +75,10 @@ function updateAllPosts(posts) {
         $('.post-author-info img', postElement).attr('src', post.author.avatar);
 
         $('.post-title h3', postElement).text( post.text );
+
         $('.like-button', postElement).text( post.likes );
-        
+        $('.like-button', postElement).attr('data-postid', post.id );
+
         if(post.media){
             $( ".post-author", postElement ).after('<div class="post-image"></div>');
            if(post.media.type == "image"){
@@ -86,3 +98,4 @@ function updateAllPosts(posts) {
         $('section.main-container').append(postElement);
     }
 }
+
