@@ -14,9 +14,6 @@ $(function() {
         $('.like-button[data-postid="'+postId+'"]').toggleClass('liked');
     });
     
-
-
-
     /* Fetch user info and put it into dropdown */
     $.get('https://private-anon-6783f8eed5-wad20postit.apiary-mock.com/users/1')
         .done( (data) => updateUserInfo(data) )
@@ -26,6 +23,8 @@ $(function() {
     $.get('https://private-anon-6783f8eed5-wad20postit.apiary-mock.com/posts')
         .done( (data) => updateAllPosts(data) )
         .fail((error) => console.log(error));
+
+    
 
 
 })
