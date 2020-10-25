@@ -38,18 +38,24 @@ let profileTemplate = '<div class="profile-browse">\n' +
 '       </div>\n' +
 '</div>'
 
+let profileRowTemplate = '<div class="browse-row">\n' +
+'       </div>'
 
 function updateAvatarInfo(avatars) {
-    
+    var count = 0
     for (avatar of avatars){
         console.log(avatar)
         let profileElement = $(profileTemplate);
-        
+        let profileRowElement = $(profileRowTemplate)
         $('.avatar-container img', profileElement).attr('src', avatar.avatar);
         $('.profile-name h3', profileElement).text(avatar.firstname + " " + avatar.lastname);
         $('.follow-button', profileElement).attr('data-avatarid', avatar.firstname );
-
-        $('section.main-container').append(profileElement);
+        
+        if(count % 2 == 0){
+            $('section.main-container').append(profileRowElement)
+        }
+        $('.browse-row').last().append(profileElement);
+        count += 1
     }
 }
 
