@@ -32,7 +32,7 @@ let profileTemplate = '<div class="profile-browse">\n' +
 '       <div class="avatar-container">\n' +
 '               <img src="res/images/avatar.png" class="avatar-browse" alt="Me">\n' +
 '       </div>\n' +
-'       <div><h3>Gordon Freeman</h3></div>\n' +
+'       <div class="profile-name"><h3>Gordon Freeman</h3></div>\n' +
 '               <div><button>Follow</button></div>\n' +
 '       </div>\n' +
 '</div>'
@@ -45,7 +45,7 @@ function updateAvatarInfo(avatars) {
         let profileElement = $(profileTemplate);
         
         $('.avatar-container img', profileElement).attr('src', avatar.avatar);
-        $('.profile-browse h3', profileElement).text(avatar.firstname + " " + avatar.lastname);
+        $('.profile-name h3', profileElement).text(avatar.firstname + " " + avatar.lastname);
         $('section.main-container').append(profileElement);
     }
 }
