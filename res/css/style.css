@@ -222,6 +222,22 @@ nav div.avatar-container {
     background-color: #01579b;
 }
 
+.follow-button {
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-color: #8a8a8a;
+    width: 80px;
+    height: 25px;
+    line-height: 10px;
+    text-align: left;
+    border: none;
+}
+
+.followed {
+    background-color: #01579b;
+}
+
 .avatar-browse {
     width: 150px;
     height: 150px;
